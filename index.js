@@ -13,44 +13,48 @@ mongoose
   .then((x) => {
     console.log(`Connected to the database: "${x.connection.name}"`);
     // Before adding any recipes to the database, let's remove all existing ones
-    return Recipe.create();
+    return Recipe.create({ title: "Catalan Ribs and Chickpeas Stew",
+    level: "Amateur Chef",
+    ingredients: [
+      "10 Pork Ribs",
+      "3 Red bell Peppers",
+      "3 Onions",
+      "1/4 Andalusian Olive oil",
+      "3 garlic gloves",
+      "3 tablespoons pepper",
+      "salt to taste",
+      "1 spoon of Paprika de la Vera",
+      "500gr Tomatoe Sauce",
+      "2 cloves",
+      "Tea Spoon of Cummin"
+    ],
+     });
   })
-  .then(() => {
-    recipeSchema.create({
-      title: "Catalan Chicken Thighs",
-      level: "Amateur Chef",
-      ingredients: [
-        "1/2 cup rice Brandy",
-        "5 tablespoons honey",
-        "1/3 cup soy sauce (such as Silver Swan®)",
-        "1/4 cup Andalusian Olvive oil",
-        "3 tablespoons Clove",
-        "3 tablespoons of Cinnamon",
-        "3 tablespoons minced garlic",
-        "salt to taste",
-        "pepper to taste",
-        "8 skinless, boneless chicken thighs",
-      ],
-    .then(create.Recipe)});
+  .then(createdRecipe => console.log(createdRecipe)) 
+    
+    .then(() => mongoose.connection.close())
     // Run your code here, after you have insured that the connection was made
-  })
+
   .catch((error) => {
     // console.error("Error connecting to the database", error);
   });
 
-const catalanChicken = new Recipe({
+const catalanRibs = new Recipe({
 
-  title: "Catalan Chicken Drumsticks 69",
+  title: "Catalan Ribs and Chickpeas Stew",
   level: "Amateur Chef",
   ingredients: [
-    "1/2 cup rice vinegar",
-    "5 tablespoons honey",
-    "1/3 cup soy sauce (such as Silver Swan®)",
-    "1/4 cup Asian (toasted) sesame oil",
-    "3 tablespoons Asian chili garlic sauce",
-    "3 tablespoons minced garlic",
+    "10 Pork Ribs",
+    "3 Red bell Peppers",
+    "3 Onions",
+    "1/4 Andalusian Olive oil",
+    "3 garlic gloves",
+    "3 tablespoons pepper",
     "salt to taste",
-    "8 skinless, boneless chicken thighs",
+    "1 spoon of Paprika de la Vera",
+    "500gr Tomatoe Sauce",
+    "2 cloves",
+    "Tea Spoon of Cummin"
   ],
 });
-console.log(`"${catalanChicken.title} added to the database!`);
+
